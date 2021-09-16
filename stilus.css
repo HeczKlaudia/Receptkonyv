@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+main {
+    width: 70%;
+    max-width: 700px;
+    margin: auto;
+    background-color: rgb(240, 245, 218);
+}
+
+main{
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+}
+
+.hatter{
+    background-color: indianred;
+}
+
+article {
+    padding: 7px;
+    background-color: white;
+}
+
+h2 {
+    background-color: rgb(211, 211, 209);
+}
+
+footer {
+    text-align: center;
+}
+
+#adatok img {
+    width: 100%;
+}
