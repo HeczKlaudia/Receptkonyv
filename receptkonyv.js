@@ -1,13 +1,14 @@
-let receptek = [];
-let index = 0;
 
 $(function(){
+    let receptek = [];
+    let index = 0;
     $.ajax(
         {url: "etelek.json",
         success: function(result){
-        //console.log(result);
-        receptek.push(result.receptkonyv);
-        receptek = result.receptkonyv;
+        console.log(result);
+        result.receptkonyv.forEach((value)=>{
+            receptek.push(value);
+        });
         //console.log("ajax hívásban");
         console.log(receptek);
         tablazatba();
@@ -18,25 +19,27 @@ $(function(){
       console.log("kívül" + receptek);
       //$("article").append(receptek[0].nev);  EZ ÍGY NEMJÓ!!!
 
-    
-
-});
 
 function tablazatba() {
     // Adatok megjelenítése táblázatban
     $("article").append("<table>");
     //console.log(receptek);
     let elem = "<tr id='fejlec'><th>Név</th><th>Elkészítési idő</th><th>Kép</th><th>Leírás</th><th>Hozzávalók</th></tr>";
-    for (let index = 0; index < receptek.length; index++) {
-       elem += "<tr id='" + index + "'>";
-
-       for (let item in receptek[index]) {
-           elem += "<td>" + receptek[index][item] + "</td>";
-       }
-       elem += "</tr>";
     
-    }
+    receptek.forEach((value,index)=>{
+        elem += "<tr id='" + index + "'>";
+
+        for (let item in value) {
+           elem += "<td>" + value[item] + "</td>";
+        }
+        elem += "</tr>";
+    });
+    
+    //for (let index = 0; index < receptek.length; index++) {
+    //   elem += "<tr id='" + index + "'>"; 
+    //}
     //console.log(elem);
+
     $("article table").append(elem);
 
     hatter();
@@ -81,3 +84,5 @@ function kepJobbra() {
         index = 0;
     }
 }
+
+});
