@@ -1,16 +1,16 @@
-var receptek = [];
-var index = 0;
+let receptek = [];
+let index = 0;
 
 $(function(){
     $.ajax(
         {url: "etelek.json",
         success: function(result){
         //console.log(result);
+        receptek.push(result.receptkonyv);
         receptek = result.receptkonyv;
-        console.log("ajax hívásban");
+        //console.log("ajax hívásban");
         console.log(receptek);
         tablazatba();
-        egerFole();
       }
     }
       );
@@ -26,11 +26,11 @@ function tablazatba() {
     // Adatok megjelenítése táblázatban
     $("article").append("<table>");
     //console.log(receptek);
-    var elem = "<tr id='fejlec'><th>Név</th><th>Elkészítési idő</th><th>Kép</th><th>Leírás</th><th>Hozzávalók</th></tr>";
-    for (var index = 0; index < receptek.length; index++) {
+    let elem = "<tr id='fejlec'><th>Név</th><th>Elkészítési idő</th><th>Kép</th><th>Leírás</th><th>Hozzávalók</th></tr>";
+    for (let index = 0; index < receptek.length; index++) {
        elem += "<tr id='" + index + "'>";
 
-       for (var item in receptek[index]) {
+       for (let item in receptek[index]) {
            elem += "<td>" + receptek[index][item] + "</td>";
        }
        elem += "</tr>";
